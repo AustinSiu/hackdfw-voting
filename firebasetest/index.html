@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="jquery.js"></script>
+    <script src="handlebars-v4.0.5.js"></script>
+
+    <script src="main.js"></script>
+
+</head>
+
+<script id="some-template" type="text/x-handlebars-template">
+    <div id="{{key}}">Name: {{name}}, strong votes: {{strongVotes}}, weak votes: {{weakVotes}}, {{key}}
+        <button onclick="update()">Update</button>
+
+    </div>
+
+</script>
+
+
+<body onload="load()">
+<p>Hello World</p>
+<button onclick="makestuff()">Do stuff</button>
+<br><br>
+
+<input type="text" id="name" placeholder="name">
+<br>
+<input type="text" id="sVotes" placeholder="strong">
+<br>
+<input type="text" id="wVotes" placeholder="weak">
+<br>
+<button onclick="addItem()">create new</button>
+
+<br>
+
+
+
+<div id="items"></div>
+
+</body>
+</html>
