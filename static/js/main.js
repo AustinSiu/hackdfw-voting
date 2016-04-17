@@ -13,24 +13,24 @@ function createGroup(groupName) {
     }
 }
 
-function createItem(itemName, imgName) {
-    console.log(itemName + " " + imgName);
+function createItem(itemName) {
+    console.log(itemName);
 
     if (itemName != null) {
-	   var newRef = ref.push({
+	   var newRef = ref.child(groupKey + "/items").push({
 	      "name": itemName
 	   });
        var newID = newRef.key();
        console.log(newID);
-       window.location.replace("/item/" + newID);
-       if (imgName != null) {
-	       var newImgRef = ref.push({
-	           "name": imgName
-	       });
-           var newImgID = newImgRef.key();
-           console.log(newImgID);
-           window.location.replace("/item/" + newImgID);
-        }
+    //    window.location.replace("/item/" + newID);
+    //    if (imgName != null) {
+	//        var newImgRef = ref.push({
+	//            "name": imgName
+	//        });
+    //        var newImgID = newImgRef.key();
+    //        console.log(newImgID);
+    //        window.location.replace("/item/" + newImgID);
+    //     }
     }
 }
 
@@ -60,7 +60,10 @@ function loadItems() {
 		var json = snapshot.val();
 		var key = snapshot.key();
 		json.key = key;
-		// console.log(json);
+		if (!json.votes){
+			json.votes = 0;
+		}
+		console.log(json);
 		// console.log(json.name)
 		$('#items').append(template(json));
 	});

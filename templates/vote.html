@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!--Filestack-->
     <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
 
@@ -62,7 +62,7 @@
 <script id="some-template" type="text/x-handlebars-template">
     <div class="col-lg-4 col-md-4 col-xs-6" id="{{ '{{' }}key{{ '}}' }}">
         <div class="thumbnail">
-            <img src="http://placehold.it/800x500" alt="">
+            <!--<img src="http://placehold.it/800x500" alt="">-->
             <div class="caption">
                 <center>
                     <h2 class="">{{ '{{' }}name{{ '}}' }}</h2>
@@ -117,7 +117,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Create-Item Button -->
     <script>
         function loadModal(){
@@ -150,58 +150,52 @@
             };
         }
     </script>
-    
-    
-    
+
+
+
     <div id="myModal" class="modal fade">
         <div class="modal-dialog">
-            
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title centered">New Item</h4>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form name="item-info" class="pure-form pure-form-aligned">
-                        <fieldset>
-                            <div class="pure-control-group">
-                                <label for="item_name_form">Name</label>
-                                <input id="item_name_form" type="text" placeholder="Name" class="item-input" value="">
-                            </div>
-                            <div class="pure-control-group">
-                                <label for="item_id_form">ID</label>
-                                <input id="item_id_form" type="number" placeholder="ID" class="item-input" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="">
-                            </div>
-                            <div class="pure-control-group hidden">
-                                <label for="url_form">Image URL</label>
-                                <input id="url_form" type="text" placeholder="URL" class="item-input" value="">
-                            </div>
 
-                            <div>
-                                <input type="filepicker" data-fp-apikey="A1VISLPrfTcijxscOkMXoz"
-onchange="displayValue(event)" />
-    <span id="url"></span>
-                            </div>
-                        </fieldset>
-                    </form>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title centered">New Item</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <!--<form name="item-info" class="pure-form pure-form-aligned">-->
+                            <fieldset>
+                                <div class="pure-control-group">
+                                    <label for="item_name_form">Name</label>
+                                    <input id="item_name_form" type="text" placeholder="Name" class="item-input" value="" autofocus>
+                                </div>
+                                <!--<div class="pure-control-group">
+                                    <label for="item_id_form">ID</label>
+                                    <input id="item_id_form" type="number" placeholder="ID" class="item-input" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                        value="">
+                                </div>-->
+                                <!--<div class="pure-control-group hidden">
+                                    <label for="url_form">Image URL</label>
+                                    <input id="url_form" type="text" placeholder="URL" class="item-input" value="">
+                                </div>
+
+                                <div>
+                                    <input type="filepicker" data-fp-apikey="A1VISLPrfTcijxscOkMXoz" onchange="displayValue(event)" />
+                                    <span id="url"></span>
+                                </div>-->
+                            </fieldset>
+                        <!--</form>-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark" data-dismiss="modal" onclick="createItem(document.getElementById('item_name_form').value)">Submit</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-dark" data-dismiss="modal" onclick="additem()">Submit</button> 
-            </div>
-        </div>
-            
-        
+
+
         </div>
     </div>
-    
-    <section>
-        <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
-    </section>
-
-    
 
     <div class=".container-fluid">
         <div class="col-lg-8 col-lg-offset-2 text-center invisible" style="display:none" id="countDown">
@@ -233,6 +227,8 @@ onchange="displayValue(event)" />
     </div>
 
     <div class="row text-center">
+        <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
+        
         <hr>
     </div>
 
@@ -241,9 +237,9 @@ onchange="displayValue(event)" />
     <div id="items"></div>
 
     </section>
-    
+
     <script type="text/javascript">
-    function setURL(url){
+        function setURL(url){
         document.getElementById("url_form").value = url;
         $('#myModal').modal('show');
     }
@@ -294,7 +290,6 @@ onchange="displayValue(event)" />
 
         var div = document.getElementById('item_table');
     }
-    
     </script>
 
     <!--Footer -->
