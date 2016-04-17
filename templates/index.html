@@ -45,7 +45,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 
 </head>
 
@@ -88,12 +88,16 @@
 
 
     <script>
-        function loadModal(){
-            $("#myModal").modal('show');
+        function loadGroupCreateModal(){
+            $("#groupCreateModal").modal('show');
+            document.getElementById("groupName").focus();
+        }
+         function loadGroupJoinModal(){
+            $("#loadGroupJoinModal").modal('show');
             document.getElementById("groupName").focus();
         }
     </script>
-    <div id="myModal" class="modal fade">
+    <div id="groupCreateModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,6 +116,27 @@
         </div>
     </div>
 
+    <div id="loadGroupJoinModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">New Group</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please enter the group's id</p>
+                    <input type="=text" id="groupNameExisting" class="form-control" placeholder="Name" autofocus>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="joinGroup(document.getElementById('groupNameExisting').value)">Join Group</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -120,8 +145,8 @@
                 <p>Your website to help make the tough calls. <br>Click Create Group to start a poll or Join Group to join a
                     poll.
                 </p>
-                <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Group</button>
-                <a class="btn btn-primary btn-xl button-main">Join Group</a>
+                <button onclick="loadGroupCreateModal()" class="btn btn-primary btn-xl button-main">Create Group</button>
+                <a class="btn btn-primary btn-xl button-main" onclick="loadGroupJoinModal()">Join Group</a>
                 <br>
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">About</a>
             </div>
