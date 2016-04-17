@@ -106,7 +106,7 @@
 
 
 
-<body id="page-top" onload="loadItems()">
+<body id="page-top" onload="loadItems(), loadClock()">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -146,30 +146,32 @@
 
         }
         
-        function displayValue(event) {
-             document.getElementById("url").innerHTML=event.fpfile.url; 
-        }
         
-        function uploadImg(){
-            var yourApiKey = 'AhTgLagciQByzXpFGRI0Az'
-            filepicker.setKey(yourApiKey);
+        
+        // function displayValue(event) {
+        //      document.getElementById("url").innerHTML=event.fpfile.url; 
+        // }
+        
+        // function uploadImg(){
+        //     var yourApiKey = 'AhTgLagciQByzXpFGRI0Az'
+        //     filepicker.setKey(yourApiKey);
 
-            document.getElementById("uploadPhotoBtn").onclick = function(){
-              filepicker.pick({
-                  services:['COMPUTER', 'CONVERT'],
-                  mimetype:'image/*',
-                  cropRatio:1,
-                  cropForce:true,
-                },
-                function onSuccess(Blob){
-                  var image = document.getElementById("imgPlaceholder");
-                  var src = 'https://process.filestackapi.com/' + yourApiKey +
-                    '/circle/' + Blob.url
-                  image.setAttribute('src', src);
-                }
-              );
-            };
-        }
+        //     document.getElementById("uploadPhotoBtn").onclick = function(){
+        //       filepicker.pick({
+        //           services:['COMPUTER', 'CONVERT'],
+        //           mimetype:'image/*',
+        //           cropRatio:1,
+        //           cropForce:true,
+        //         },
+        //         function onSuccess(Blob){
+        //           var image = document.getElementById("imgPlaceholder");
+        //           var src = 'https://process.filestackapi.com/' + yourApiKey +
+        //             '/circle/' + Blob.url
+        //           image.setAttribute('src', src);
+        //         }
+        //       );
+        //     };
+        // }
     </script>
 
 
@@ -250,7 +252,6 @@
 
     <div id="items"></div>
 
-    </section>
 
     <script type="text/javascript">
         function setURL(url){
@@ -258,64 +259,8 @@
         $('#myModal').modal('show');
     }
         
-    function additem() {
-        var npath = "items/";
-        var item_id = document.getElementById('item_id_form').value;
-        var pref = ref.child(npath + item_id);
-        ref.child("items/" + item_id).once("value", function (snapshot) {
-            if (snapshot.exists() && '' != item_id) {
-                alert("Item id already exists.");
+</script>
 
-            }else{
-                    pref.set({
-                        "name": document.getElementById('item_name_form').value,
-                        "owner_id": "{{fbid}}",
-                        "imgurl":document.getElementById('url_form').value
-                    });
-            }
-        });
-        console.log(":LKHE:KREKLRJE:");
-        console.log(document.getElementById('item_name_form').value);
-//        var div = document.createElement("div");
-//        div.setAttribute('class', 'item');
-//        div.setAttribute('class', 'col-lg-4');
-//        div.setAttribute('class', 'col-md-4');
-//        div.setAttribute('class', 'col-xs-6');
-//        document.body.appendChild(div);
-
-//        $("page-top").append("<div class="item center-croped col-lg-4 col-md-4 col-xs-6">
-//        <div class="thumbnail">
-//            <img src="http://placehold.it/800x500" alt="">
-//            <div class="caption">
-//                <h3>Feature Label</h3>
-//                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-//                <p>
-//                    <a href="#" class="btn btn-default">Weak Vote</a> 
-//                    <a href="#" class="btn btn-primary">Strong Vote</a>
-//                    <a href="#" class="btn btn-default">Rename</a> 
-//                </p>
-//            </div>
-//        </div>
-//    </div>");
-        
-        //$(".item").clone().appendTo(document.body); // clones all, wrong
-
-        console.log($(".item-input").value);
-
-        var div = document.getElementById('item_table');
-    }
-    </script>
-
-    <!--Footer -->
-    <!--<footer>
-        <div class="container">
-            <!--<div class="row">-->
-    <!--<div class="text-center">
-                    <p class="text-muted">Copyright &copy; Apple Picker 2017</p>
-                </div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</footer>-->
 
     <!-- jQuery -->
 
