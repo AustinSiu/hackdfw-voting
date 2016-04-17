@@ -18,11 +18,20 @@ function addItem() {
     })
 }
 
-function loadItems() {
+function load() {
     var source = $("#some-template").html();
     var template = Handlebars.compile(source);
 
-    ref.child(groupKey + "/items").orderByChild("name").on("child_added", function (snapshot) {
+
+        ref.child(groupKey + "/name").on("value", function (snapshot) {
+            // var json = snapshot.val();
+            // var key = snapshot.key();
+            // json.key = key;
+            console.log(snapshot.val());
+            // $('#items').append(template(json));
+        });
+
+        ref.child(groupKey + "/items").orderByChild("name").on("child_added", function (snapshot) {
         var json = snapshot.val();
         var key = snapshot.key();
         json.key = key;
