@@ -27,6 +27,15 @@ function loadItems() {
 		$('#GroupName').replaceWith(snapshot.val());
 	});
 
+	// ref.child(groupKey + "/deadline").on("value", function (snapshot) {
+	// 	var deadline = snapshot.val();
+	// 	// var curTime = new Date().getTime();
+	// 	// var remainingTime = curTime - deadline;
+
+	// 	// call timer thing with deadline??
+	// 	// $('#deadline').replaceWith(snapshot.val());
+	// });
+
 	ref.child(groupKey + "/items").orderByChild("name").on("child_added", function (snapshot) {
 		var json = snapshot.val();
 		var key = snapshot.key();
@@ -43,7 +52,7 @@ function loadItems() {
 		// console.log(json);
 		$('#' + snapshot.key()).replaceWith(template(json));
 
-		console.log(snapshot.key())
+		// console.log(snapshot.key())
 	});
 
 	ref.child(groupKey + "/items").on("child_removed", function (snapshot) {
@@ -58,7 +67,7 @@ function loadItems() {
 
 function updateWeak(key) {
 	ref.child(groupKey + "/items/" + key + "/votes").transaction(function (current_value) {
-		$('#votes+' + key).replaceWith(+current_value + +1);
+		// $('#votes+' + key).replaceWith(+current_value + +1);
 
 		return +current_value + +1;
 	});
