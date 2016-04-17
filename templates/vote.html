@@ -109,35 +109,37 @@
 
     <br>
     <div class=".container-fluid">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
-            <h2 class="section-heading"><span id = "countDown"></span></h2>
-            <div class="well well-sm hidden">
+        <div class="col-lg-8 col-lg-offset-2 text-center invisible" style="display:none" id="countDown">
+            <h2 class="section-heading"></h2>
+            <div class="well well-sm" id="deadlineCounter">
                 <h3>Deadline: </h3>
-                
+                <div id="clockdiv">
+                    <!--<div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>-->
+                </div>
+
             </div>
         </div>
 
-        <div class="row text-center">
-            <h2 class="section-heading"><span id = "countDownTime"></span></h2>
+        <div class="row text-center visible" id="countDownInput">
+            <h2 class="section-heading"></h2>
             <div class="well well-sm">
                 <h3>Enter minutes left to decide:</h3>
                 <input id="minutes" type="number" placeholder="minutes">
-                <button class="btn btn-secondary" onclick="setDeadline(document.getElementById('minutes').value)">Start Countdown</button>
+                <button class="btn btn-secondary" onclick="initializeClock(document.getElementById('minutes').value)">Start Countdown</button>
             </div>
-            
-            <script type="application/javascript">
-                var myCountdown2 = new Countdown({
-                                    time: 300, 
-                                    width:150, 
-                                    height:80, 
-                                    rangeHi:"minute"    // <- no comma on last item!
-                                    });
-
-            </script>
         </div>
     </div>
 
-    <div class="row text-center">  <hr></div>
+    <div class="row text-center">
+        <hr>
+    </div>
 
 
 

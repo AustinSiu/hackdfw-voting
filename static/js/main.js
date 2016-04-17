@@ -91,3 +91,70 @@ function rename(key) {
 		});
 	}
 }
+
+
+(function ($) {
+    $.fn.invisible = function () {
+        return this.each(function () {
+            $(this).css("visibility", "hidden");
+			$(this).css("display", "none");
+
+        });
+    };
+    $.fn.visible = function () {
+        return this.each(function () {
+            $(this).css("visibility", "visible");
+			$(this).css("display", "block");
+
+        });
+    };
+} (jQuery));
+
+
+
+function initializeClock(endtime) {
+	$('#countDownInput').invisible();
+	$('#countDown').visible();
+
+
+
+	var date = Date.now;
+	var currentDate = new Date();
+	var newDateObj = new Date(currentDate.getTime() + endtime * 60000);
+
+	var dateString = newDateObj.toString();
+
+
+	var clock = document.getElementById('clockdiv');
+	var timeinterval = setInterval(function () {
+		var t = getTimeRemaining(dateString);
+		clock.innerHTML =
+			// 'hours: ' + t.hours + '<br>' +
+			// 'minutes: ' + t.minutes + '<br>' +
+			// 'seconds: ' + t.seconds;
+			t.hours + ':' + t.minutes +':'+t.seconds;
+		if (t.total <= 0) {
+			clearInterval(timeinterval);
+			timeOut();
+		}
+	}, 1000);
+}
+
+function getTimeRemaining(endtime) {
+	var t = Date.parse(endtime) - Date.parse(new Date());
+	var seconds = Math.floor((t / 1000) % 60);
+	var minutes = Math.floor((t / 1000 / 60) % 60);
+	var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+	var days = Math.floor(t / (1000 * 60 * 60 * 24));
+	return {
+		'total': t,
+		'days': days,
+		'hours': hours,
+		'minutes': minutes,
+		'seconds': seconds
+	};
+}
+
+function timeOut(){
+	alert("wow!");
+}
