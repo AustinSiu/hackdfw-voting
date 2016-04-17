@@ -78,6 +78,11 @@ function loadItems() {
 		$('#' + snapshot.key()).replaceWith();
 		// console.log(snapshot.key())
 	});
+	
+	//load URL
+	// $('#url').text(window.location.href);
+	// new Clipboard('.clippy');
+
 }
 
 function updateWeak(key) {

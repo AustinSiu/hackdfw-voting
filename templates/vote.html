@@ -43,6 +43,9 @@
     <script src="../static/js/main.js"></script>
     <script src="../static/js/countdown.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
 
     <script>
         var groupKey = "{{groupKey}}"
@@ -128,6 +131,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+
 
 
     <section class="bg-primary" id="about">
@@ -219,9 +223,13 @@
     </div>
 
     <div class="row text-center">
-        <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
+        <!--<div id="url" class="clippy">Share the URL to make a choice!</div>
+        <br>-->
 
+        <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
+        <!--<button class="btn" data-clipboard-target="#url"></button>-->
         <hr>
+
     </div>
 
 
