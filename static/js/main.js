@@ -66,6 +66,7 @@ function loadItems() {
 		json.key = key;
 		// console.log(json);
 		$('#' + snapshot.key()).replaceWith(template(json));
+		loadClock();
 
 		// console.log(snapshot.key())
 	});
