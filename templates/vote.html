@@ -112,7 +112,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Group name.</h2>
+                    <h2 class="section-heading"><span id="GroupName"></span></h2>
                 </div>
             </div>
         </div>
@@ -192,27 +192,16 @@
                     <button type="submit" class="btn btn-dark" data-dismiss="modal" onclick="createItem(document.getElementById('item_name_form').value)">Submit</button>
                 </div>
             </div>
-
-
         </div>
     </div>
 
     <div class=".container-fluid">
-        <div class="col-lg-8 col-lg-offset-2 text-center invisible" style="display:none" id="countDown">
+        <div class="row text-center invisible" style="display:none" id="countDown">
             <h2 class="section-heading"></h2>
             <div class="well well-sm" id="deadlineCounter">
                 <h3>Deadline: </h3>
                 <div id="clockdiv">
-                    <!--<div>
-                        <span class="hours"></span>
-                        <div class="smalltext">Hours</div>
-                    </div>
-                    <div>
-                        <span class="minutes"></span>
-                        <div class="smalltext">Minutes</div>
-                    </div>-->
                 </div>
-
             </div>
         </div>
 
