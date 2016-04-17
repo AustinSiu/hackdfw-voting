@@ -148,6 +148,7 @@ function loadClock() {
 					t.hours + ':' + t.minutes + ':' + t.seconds;
 				if (t.total <= 0) {
 					clearInterval(timeinterval);
+					clock.innerHTML = "Done!";
 					timeOut();
 				}
 			}, 1000);
@@ -184,6 +185,8 @@ function initializeClock(endtime) {
 			t.hours + ':' + t.minutes + ':' + t.seconds;
 		if (t.total <= 0) {
 			clearInterval(timeinterval);
+			clock.innerHTML = "Done!";
+
 			timeOut();
 		}
 	}, 1000);
