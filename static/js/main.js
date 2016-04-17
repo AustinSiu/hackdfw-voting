@@ -7,7 +7,8 @@ function createGroup(groupName) {
 	    var newRef = ref.push({
 	      "name": groupName
 	    });
-      varnewID = newRef.key();
+      var newID = newRef.key();
+      console.log(newID);
+      window.location.replace("/group/" + newID);
     }
-    window.location.href ="/group/newID";
 }
