@@ -9,5 +9,5 @@ function createGroup(groupName) {
 	    });
       varnewID = newRef.key();
     }
-    window.location.href("/group/newID");
+    window.location.href ="/group/newID";
 }
