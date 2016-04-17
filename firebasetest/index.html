@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Apple Picker</title>
+
 
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="jquery.js"></script>
+
     <script src="handlebars-v4.0.5.js"></script>
 
     <script src="main.js"></script>
+
+
     <script>
-        var groupKey = "-KFXVyEhrjuvr2xYlL7r";
+        //        var groupKey = "{{groupKey}}"
+        // console.log(groupKey);
     </script>
+
 
 </head>
 
+<!--handlebars-->
 <script id="some-template" type="text/x-handlebars-template">
-    <div id="{{key}}">Name: {{name}}, votes: {{votes}}
-        <button onclick="updateWeak('{{key}}')">Weak Vote</button>
-        <button onclick="updateStrong('{{key}}')">Strong Vote</button>
-        <button onclick="deleteItem('{{key}}')">Delete</button>
-        <button onclick="rename('{{key}}')">Rename</button>
-
-    </div>
+    <div id="{{key}}">Name: {{name}}, votes: {{votes}}</div>
 </script>
 
-
-<body onload="load()">
-<p>Hello World</p>
-<button onclick="makestuff()">Do stuff</button>
-<br><br>
-
-<input type="text" id="name" placeholder="name">
-<br>
-<input type="text" id="votes" placeholder="votes">
-<br>
-<button onclick="addItem()">create new</button>
-
-<br>
-<br>
+<body onload="loadItems()">
 
 <div id="items"></div>
 
