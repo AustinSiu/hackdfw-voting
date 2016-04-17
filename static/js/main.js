@@ -23,10 +23,10 @@ function loadItems() {
 	var source = $("#some-template").html();
 	var template = Handlebars.compile(source);
 
-	// ref.child(groupKey + "/name").on("value", function (snapshot) {
-	// 	$('#GroupName').replaceWith(snapshot.val());
-	// 	// $('#items').append(template(json));
-	// });
+	ref.child(groupKey + "/name").on("value", function (snapshot) {
+		$('#GroupName').replaceWith(snapshot.val());
+		// $('#items').append(template(json));
+	});
 
 	ref.child(groupKey + "/items").orderByChild("name").on("child_added", function (snapshot) {
 		var json = snapshot.val();

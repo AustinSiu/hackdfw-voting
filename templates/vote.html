@@ -26,10 +26,14 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/creative.css" type="text/css">
+    <!--<link rel="stylesheet" href="../static/css/main.css" type="text/css">-->
+    <link rel="stylesheet" href="../static/css/item.css" type="text/css">
+
+
 
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="../static/js/jquery.js"></script>
-    
+
     <script src="../static/js/handlebars-v4.0.5.js"></script>
 
     <script src="../static/js/main.js"></script>
@@ -50,25 +54,31 @@
 </head>
 
 <!--handlebars-->
-<script id="some-template" type="text/x-handlebars-template">    
-     <div class="col-lg-4 col-md-4 col-xs-6">
+<script id="some-template" type="text/x-handlebars-template">
+    <div class="col-lg-4 col-md-4 col-xs-6">
         <div class="thumbnail">
             <img src="http://placehold.it/800x500" alt="">
             <div class="caption" id="{{ '{{' }}key{{ '}}' }}">
-                <center><h2 class="">{{ '{{' }}name{{ '}}' }}</h2></center>
+                <center>
+                    <h2 class="">{{ '{{' }}name{{ '}}' }}</h2>
+                </center>
                 <hr>
-                <p>
-                    <button onclick="updateStrong('{{ '{{' }}key{{ '}}' }}')" class="btn btn-vote">Strong Vote</button>                    
-                    <button onclick="updateWeak('{{ '{{' }}key{{ '}}' }}')" class="btn btn-success">Weak Vote</button>
-                     <button onclick="rename('{{ '{{' }}key{{ '}}' }}')" class="btn btn-warning">Rename</button>
-                    <button onclick="deleteItem('{{ '{{' }}key{{ '}}' }}')" class="btn btn-danger">Delete</button>
-                </p>
+                <center>
+                    <h2 class="">{{ '{{' }}votes{{ '}}' }}</h2></center>
+                <center>
+                    <p>
+                        <button onclick="updateStrong('{{ '{{' }}key{{ '}}' }}')" class="btn btn-info button-item">Strong Vote</button>
+                        <button onclick="updateWeak('{{ '{{' }}key{{ '}}' }}')" class="btn btn-success button-item">Weak Vote</button>
+                        <button onclick="rename('{{ '{{' }}key{{ '}}' }}')" class="btn btn-warning button-item">Rename</button>
+                        <button onclick="deleteItem('{{ '{{' }}key{{ '}}' }}')" class="btn btn-danger button-item">Delete</button>
+                    </p>
+                </center>
             </div>
         </div>
     </div>
 </script>
 
-   
+
 
 <body id="page-top" onload="loadItems()">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -99,12 +109,13 @@
     <br>
     <div class="col-lg-8 col-lg-offset-2 text-center">
         <h2 class="section-heading"><span id = "GroupName"></span></h2>
+        <hr>
     </div>
+
+
     <br>
 
-<!--<button  onclick="loadItems()">cry</button>-->
-
-<div id="items"></div>
+    <div id="items"></div>
 
 
 
