@@ -24,7 +24,7 @@ function loadItems() {
 
 	ref.child(groupKey + "/name").on("value", function (snapshot) {
 		console.log(snapshot.val());
-		$('#GroupName').replaceWith();
+		$('#GroupName').replaceWith(snapshot.val());
 		// $('#items').append(template(json));
 	});
 
