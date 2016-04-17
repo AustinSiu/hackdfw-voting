@@ -6523,7 +6523,7 @@ button.close {
 }
 .center-cropped {
   width: 800px;
-  height: 500px;
+  height: auto;
   background-position: center center;
   background-repeat: no-repeat;
 }
