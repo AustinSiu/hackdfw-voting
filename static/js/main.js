@@ -4,8 +4,10 @@ function createGroup(groupName) {
     console.log(groupName);
 
     if (groupName != null) {
-	    ref.push({
+	    var newRef = ref.push({
 	      "name": groupName
 	    });
+      varnewID = newRef.key();
     }
+    window.location.href("/group/newID");
 }

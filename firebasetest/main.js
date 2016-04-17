@@ -1,5 +1,4 @@
 var ref = new Firebase("https://group-poll.firebaseio.com/");
-var groupKey = "-KFW9XlFLT97QUXv_zp9";
 
 
 function makestuff() {
