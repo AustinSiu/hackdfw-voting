@@ -6256,6 +6256,13 @@ button.close {
 .carousel-inner > .item > a > img {
   line-height: 1;
 }
+.item {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 500px;
+    min-width: 800px;
+}
+
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
@@ -6513,6 +6520,12 @@ button.close {
 .modal-header:after,
 .modal-footer:after {
   clear: both;
+}
+.center-cropped {
+  width: 800px;
+  height: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .center-block {
   display: block;

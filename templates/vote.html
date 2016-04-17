@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <!--Filestack-->
+    <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
 
     <title>Apple Picker</title>
 
@@ -26,6 +29,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/creative.css" type="text/css">
+
     <!--<link rel="stylesheet" href="../static/css/main.css" type="text/css">-->
     <link rel="stylesheet" href="../static/css/item.css" type="text/css">
 
@@ -104,10 +108,101 @@
     </nav>
 
 
-    <section class="bg-primary" id="header"></section>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Group name.</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Create-Item Button -->
+    <script>
+        function loadModal(){
+            $("#myModal").modal('show');
 
+        }
+        
+        function displayValue(event) {
+             document.getElementById("url").innerHTML=event.fpfile.url; 
+        }
+        
+        function uploadImg(){
+            var yourApiKey = 'AhTgLagciQByzXpFGRI0Az'
+            filepicker.setKey(yourApiKey);
 
-    <br>
+            document.getElementById("uploadPhotoBtn").onclick = function(){
+              filepicker.pick({
+                  services:['COMPUTER', 'CONVERT'],
+                  mimetype:'image/*',
+                  cropRatio:1,
+                  cropForce:true,
+                },
+                function onSuccess(Blob){
+                  var image = document.getElementById("imgPlaceholder");
+                  var src = 'https://process.filestackapi.com/' + yourApiKey +
+                    '/circle/' + Blob.url
+                  image.setAttribute('src', src);
+                }
+              );
+            };
+        }
+    </script>
+    
+    
+    
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title centered">New Item</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form name="item-info" class="pure-form pure-form-aligned">
+                        <fieldset>
+                            <div class="pure-control-group">
+                                <label for="item_name_form">Name</label>
+                                <input id="item_name_form" type="text" placeholder="Name" class="item-input" value="">
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="item_id_form">ID</label>
+                                <input id="item_id_form" type="number" placeholder="ID" class="item-input" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="">
+                            </div>
+                            <div class="pure-control-group hidden">
+                                <label for="url_form">Image URL</label>
+                                <input id="url_form" type="text" placeholder="URL" class="item-input" value="">
+                            </div>
+
+                            <div>
+                                <input type="filepicker" data-fp-apikey="A1VISLPrfTcijxscOkMXoz"
+onchange="displayValue(event)" />
+    <span id="url"></span>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-dark" data-dismiss="modal" onclick="additem()">Submit</button> 
+            </div>
+        </div>
+            
+        
+        </div>
+    </div>
+    
+    <section>
+        <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
+    </section>
+
+    
+
     <div class=".container-fluid">
         <div class="col-lg-8 col-lg-offset-2 text-center invisible" style="display:none" id="countDown">
             <h2 class="section-heading"></h2>
@@ -145,6 +240,63 @@
 
     <div id="items"></div>
 
+    </section>
+    
+    <script type="text/javascript">
+    function setURL(url){
+        document.getElementById("url_form").value = url;
+        $('#myModal').modal('show');
+    }
+        
+    function additem() {
+        var npath = "items/";
+        var item_id = document.getElementById('item_id_form').value;
+        var pref = ref.child(npath + item_id);
+        ref.child("items/" + item_id).once("value", function (snapshot) {
+            if (snapshot.exists() && '' != item_id) {
+                alert("Item id already exists.");
+
+            }else{
+                    pref.set({
+                        "name": document.getElementById('item_name_form').value,
+                        "owner_id": "{{fbid}}",
+                        "imgurl":document.getElementById('url_form').value
+                    });
+            }
+        });
+        console.log(":LKHE:KREKLRJE:");
+        console.log(document.getElementById('item_name_form').value);
+//        var div = document.createElement("div");
+//        div.setAttribute('class', 'item');
+//        div.setAttribute('class', 'col-lg-4');
+//        div.setAttribute('class', 'col-md-4');
+//        div.setAttribute('class', 'col-xs-6');
+//        document.body.appendChild(div);
+
+//        $("page-top").append("<div class="item center-croped col-lg-4 col-md-4 col-xs-6">
+//        <div class="thumbnail">
+//            <img src="http://placehold.it/800x500" alt="">
+//            <div class="caption">
+//                <h3>Feature Label</h3>
+//                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+//                <p>
+//                    <a href="#" class="btn btn-default">Weak Vote</a> 
+//                    <a href="#" class="btn btn-primary">Strong Vote</a>
+//                    <a href="#" class="btn btn-default">Rename</a> 
+//                </p>
+//            </div>
+//        </div>
+//    </div>");
+        
+        //$(".item").clone().appendTo(document.body); // clones all, wrong
+
+        console.log($(".item-input").value);
+
+        var div = document.getElementById('item_table');
+    }
+    
+    </script>
+
     <!--Footer -->
     <!--<footer>
         <div class="container">
@@ -165,9 +317,12 @@
     <script src="../static/js/jquery.easing.min.js"></script>
     <script src="../static/js/jquery.fittext.js"></script>
     <script src="../static/js/wow.min.js"></script>
+    <script src="https://api.filepicker.io/v2/filepicker.js"></script>
+
 
     <!-- Custom Theme JavaScript -->
     <script src="../static/js/creative.js"></script>
+    <script src="../static/js/main.js"></script>
 
 </body>
 
