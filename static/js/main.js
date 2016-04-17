@@ -12,3 +12,7 @@ function createGroup(groupName) {
       window.location.replace("/group/" + newID);
     }
 }
+
+function joinGroup(groupID) {
+  window.location.href = "/group/" + groupID;
+}
