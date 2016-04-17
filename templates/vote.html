@@ -37,6 +37,7 @@
     <script src="../static/js/handlebars-v4.0.5.js"></script>
 
     <script src="../static/js/main.js"></script>
+    <script src="../static/js/countdown.js"></script>
 
 
     <script>
@@ -112,18 +113,7 @@
             <h2 class="section-heading"><span id = "countDown"></span></h2>
             <div class="well well-sm hidden">
                 <h3>Deadline: </h3>
-                <div id="countdown">
-                    <p class="days">00</p>
-                    <p class="timeRefDays">days</p>
-                    <p class="hours">00</p>
-                    <p class="timeRefHours">hours</p>
-                    <p class="minutes">00</p>
-                    <p class="timeRefMinutes">minutes</p>
-                    <p class="seconds">00</p>
-                    <p class="timeRefSeconds">seconds</p>
-                </div>
-                <!--<hr>-->
-
+                
             </div>
         </div>
 
@@ -134,6 +124,16 @@
                 <input id="minutes" type="number" placeholder="minutes">
                 <button class="btn btn-secondary" onclick="setDeadline(document.getElementById('minutes').value)">Start Countdown</button>
             </div>
+            
+            <script type="application/javascript">
+                var myCountdown2 = new Countdown({
+                                    time: 300, 
+                                    width:150, 
+                                    height:80, 
+                                    rangeHi:"minute"    // <- no comma on last item!
+                                    });
+
+            </script>
         </div>
     </div>
 
