@@ -13,11 +13,13 @@
 </head>
 
 <script id="some-template" type="text/x-handlebars-template">
-    <div id="{{key}}">Name: {{name}}, strong votes: {{strongVotes}}, weak votes: {{weakVotes}}, {{key}}
-        <button onclick="update()">Update</button>
+    <div id="{{key}}">Name: {{name}}, votes: {{votes}}
+        <button onclick="updateWeak('{{key}}')">Weak Vote</button>
+        <button onclick="updateStrong('{{key}}')">Strong Vote</button>
+        <button onclick="deleteItem('{{key}}')">Delete</button>
+        <button onclick="rename('{{key}}')">Rename</button>
 
     </div>
-
 </script>
 
 
@@ -28,15 +30,12 @@
 
 <input type="text" id="name" placeholder="name">
 <br>
-<input type="text" id="sVotes" placeholder="strong">
-<br>
-<input type="text" id="wVotes" placeholder="weak">
+<input type="text" id="votes" placeholder="votes">
 <br>
 <button onclick="addItem()">create new</button>
 
 <br>
-
-
+<br>
 
 <div id="items"></div>
 
