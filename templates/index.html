@@ -112,12 +112,31 @@
             <div class="header-content-inner">
                 <h1>Apple Picker</h1>
                 <hr>
+<<<<<<< HEAD
                 <p>Your website to help make the tough calls. <br>Click Create Group to start a poll or Join Group to join a
                     poll.
                 </p>
                 <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Group</button>
 
 
+=======
+                <p>Your website to help make the tough calls. <br>Click Create Group to start a poll or Join Group to join a poll.</p>
+                <a href="#popup1" class="btn btn-primary btn-xl button">Create Group</a>
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+                             <h2>Create Group Name</h2>
+                                <a class="close" href="#">&times;</a>
+                                <div class="text">
+                                    <form>
+                                      <input type="text" id="groupName" placeholder="Group Name" class="">
+                                    </form>
+                                    <br></br>
+                                    <button onClick="createGroup(document.getElementById('groupName').value)" >Submit</button>
+                                </div>
+                        </div>
+                    </div>
+                
+>>>>>>> bd0a0ad9adab23bee837c80d61ac7188a8bdc25c
 
 
                 <a class="btn btn-primary btn-xl button-main">Join Group</a>
