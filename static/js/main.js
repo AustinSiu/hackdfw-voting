@@ -63,7 +63,7 @@ function loadItems() {
 		if (!json.votes){
 			json.votes = 0;
 		}
-		console.log(json);
+		// console.log(json);
 		// console.log(json.name)
 		$('#items').append(template(json));
 	});
@@ -95,6 +95,7 @@ function updateWeak(key) {
 		return +current_value + +1;
 	});
 }
+
 function updateStrong(key) {
 	ref.child(groupKey + "/items/" + key + "/votes").transaction(function (current_value) {
 		return +current_value + +2;
@@ -179,5 +180,22 @@ function getTimeRemaining(endtime) {
 }
 
 function timeOut(){
-	alert("wow!");
+	getHighestVote();
+	
+}
+
+
+function getHighestVote() {
+	ref.child(groupKey + "/items").orderByChild("votes").limitToLast(1).on("child_added", function (snapshot) {
+		// $('#votes+' + key).replaceWith(+current_value + +1);
+		var json = snapshot.val();
+		var key = snapshot.key();
+
+		var source = $("#highest-template").html();
+		var template = Handlebars.compile(source);
+	
+    	$('#highestItemWinner').append(template(json));
+    	$("#getHighestVote").modal('show');
+		
+	});
 }
