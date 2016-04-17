@@ -28,6 +28,9 @@
     <!-- Pop up CSS -->
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
 
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="../static/js/handlebars-v4.0.5.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,14 +90,14 @@
                                 <a class="close" href="#">&times;</a>
                                 <div class="text">
                                     <form>
-                                      Group name:
-                                      <input type="text" name="groupname">
+                                      <input type="text" id="groupName" placeholder="Group Name">
                                     </form>
                                     <br></br>
-                                    <a class="col-lg-8 col-lg-offset-2 btn btn-primary page-scroll">Submit</a>
+                                    <a onClick="createGroup(document.getElementById('groupName').value)" class="col-lg-8 col-lg-offset-2 btn btn-primary page-scroll">Submit</a>
                                 </div>
                         </div>
                     </div>
+                
 
                 <a class="btn btn-primary btn-xl page-scroll">Join Group</a>
                 <br></br>
@@ -285,18 +288,19 @@
     </section> -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../static/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="../static/js/jquery.easing.min.js"></script>
+    <script src="../static/js/jquery.fittext.js"></script>
+    <script src="../static/js/wow.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+    <script src="../static/js/creative.js"></script>
+    <script src="../static/js/main.js"></script>
 
 </body>
 
