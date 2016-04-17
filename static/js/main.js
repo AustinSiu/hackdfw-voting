@@ -30,6 +30,17 @@ function joinGroup(groupID) {
 	window.location.href = "/group/" + groupID;
 }
 
+function findGroup(groupName){
+	console.log(groupName);
+	ref.on("child_added", function (snapshot) {
+		var json = snapshot.val();
+		if(json['name'] == groupName){
+			window.location.href = "/group/" + snapshot.key();
+		}
+	});
+
+}
+
 // Firebase + templates stuff
 function loadItems() {
 	var source = $("#some-template").html();
