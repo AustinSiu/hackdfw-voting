@@ -65,7 +65,7 @@ p {
 }
 
 section {
-    padding: 100px 0;
+    padding: 25px 0;
 }
 
 aside {
@@ -94,7 +94,7 @@ aside {
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
-    color: #eb3812;
+    color: #f05f40;
 }
 
 .navbar-default .nav > li>a,
@@ -178,7 +178,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url(../img/header.jpg);
+    background-image: url(../img/back.jpeg);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -198,6 +198,7 @@ header .header-content .header-content-inner h1 {
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 700;
+    text-shadow: 2px 2px #b34700;
 }
 
 header .header-content .header-content-inner hr {

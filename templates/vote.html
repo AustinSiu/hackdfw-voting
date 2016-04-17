@@ -8,18 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Creative - Start Bootstrap Theme</title>
     
     <!--Filestack-->
     <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
+
+    <title>Apple Picker</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
@@ -27,8 +29,24 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/creative.css" type="text/css">
+
+    <!--<link rel="stylesheet" href="../static/css/main.css" type="text/css">-->
+    <link rel="stylesheet" href="../static/css/item.css" type="text/css">
+
+
+
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="../static/js/jquery.js"></script>
+
     <script src="../static/js/handlebars-v4.0.5.js"></script>
+
+    <script src="../static/js/main.js"></script>
+
+
+    <script>
+        var groupKey = "{{groupKey}}"
+        // console.log(groupKey);
+    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +57,34 @@
 
 </head>
 
-<body id="page-top">
+<!--handlebars-->
+<script id="some-template" type="text/x-handlebars-template">
+    <div class="col-lg-4 col-md-4 col-xs-6" id="{{ '{{' }}key{{ '}}' }}">
+        <div class="thumbnail">
+            <img src="http://placehold.it/800x500" alt="">
+            <div class="caption" >
+                <center>
+                    <h2 class="">{{ '{{' }}name{{ '}}' }}</h2>
+                </center>
+                <hr>
+                <center>
+                    <h2 class="">{{ '{{' }}votes{{ '}}' }}</h2></center>
+                <center>
+                    <p>
+                        <button onclick="updateStrong('{{ '{{' }}key{{ '}}' }}')" class="btn btn-info button-item">Strong Vote</button>
+                        <button onclick="updateWeak('{{ '{{' }}key{{ '}}' }}')" class="btn btn-success button-item">Weak Vote</button>
+                        <button onclick="rename('{{ '{{' }}key{{ '}}' }}')" class="btn btn-warning button-item">Rename</button>
+                        <button onclick="deleteItem('{{ '{{' }}key{{ '}}' }}')" class="btn btn-danger button-item">Delete</button>
+                    </p>
+                </center>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+
+<body id="page-top" onload="loadItems()">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,20 +95,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html#page-top">Apple Picker</a>
+                <a class="navbar-brand page-scroll" href="/home">Apple Picker</a>
+
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="index.html#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.html#help">Help</a>
-                    </li>
-                </ul>
-            </div>
+
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -167,9 +204,9 @@ onchange="displayValue(event)" />
     </section>
 
     <!-- Options -->
-    <div class="col-lg-4 col-md-4 col-xs-6">
+    <div class="item center-croped col-lg-4 col-md-4 col-xs-6">
         <div class="thumbnail">
-            <img src="http://placehold.it/800x500" alt="">
+            <img src="C:\Users\siuau\Downloads\1280px-IHOP_Restaurant_logo.svg.png" alt="">
             <div class="caption">
                 <h3>Feature Label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -182,9 +219,9 @@ onchange="displayValue(event)" />
         </div>
     </div>
         
-    <div class="col-lg-4 col-md-4 col-xs-6">
+    <div class="item center-croped col-lg-4 col-md-4 col-xs-6">
         <div class="thumbnail">
-            <img src="http://placehold.it/800x500" alt="">
+            <img src="C:\Users\siuau\Downloads\logo_fogo_de_chao.jpg" alt="">
             <div class="caption">
                 <h3>Feature Label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -197,7 +234,22 @@ onchange="displayValue(event)" />
         </div>
     </div>
         
-    <div class="item col-lg-4 col-md-4 col-xs-6">
+    <div class="item center-croped col-lg-4 col-md-4 col-xs-6">
+        <div class="thumbnail">
+            <img src="C:\Users\siuau\Downloads\Fazoli_s.png" alt="">
+            <div class="caption">
+                <h3>Feature Label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>
+                    <a href="#" class="btn btn-default">Weak Vote</a> 
+                    <a href="#" class="btn btn-primary">Strong Vote</a>
+                    <a href="#" class="btn btn-default">Rename</a> 
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="item center-croped col-lg-4 col-md-4 col-xs-6">
         <div class="thumbnail">
             <img src="http://placehold.it/800x500" alt="">
             <div class="caption">
@@ -212,7 +264,7 @@ onchange="displayValue(event)" />
         </div>
     </div>
     
-    <div class="item col-lg-4 col-md-4 col-xs-6">
+    <div class="item center-croped col-lg-4 col-md-4 col-xs-6">
         <div class="thumbnail">
             <img src="http://placehold.it/800x500" alt="">
             <div class="caption">
@@ -223,24 +275,35 @@ onchange="displayValue(event)" />
                     <a href="#" class="btn btn-primary">Strong Vote</a>
                     <a href="#" class="btn btn-default">Rename</a> 
                 </p>
+
+
+    <br>
+    <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading"><span id = "GroupName"></span></h2>
+        <div class="well well-sm">
+            <h3>Deadline: </h3>
+            <div id="countdown">
+                <p class="days">00</p>
+                <p class="timeRefDays">days</p>
+                <p class="hours">00</p>
+                <p class="timeRefHours">hours</p>
+                <p class="minutes">00</p>
+                <p class="timeRefMinutes">minutes</p>
+                <p class="seconds">00</p>
+                <p class="timeRefSeconds">seconds</p>
+
             </div>
         </div>
+        <hr>
     </div>
-    
-    <div class="item col-lg-4 col-md-4 col-xs-6">
-        <div class="thumbnail">
-            <img src="http://placehold.it/800x500" alt="">
-            <div class="caption">
-                <h3>Feature Label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <p>
-                    <a href="#" class="btn btn-default">Weak Vote</a> 
-                    <a href="#" class="btn btn-primary">Strong Vote</a>
-                    <a href="#" class="btn btn-default">Rename</a> 
-                </p>
-            </div>
-        </div>
-    </div>
+
+
+    <br>
+
+    <div id="items"></div>
+
+
+
     </section>
     
     <script type="text/javascript">
@@ -283,7 +346,6 @@ onchange="displayValue(event)" />
     </script>
 
     <!-- jQuery -->
-    <script src="../static/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../static/js/bootstrap.min.js"></script>
@@ -298,6 +360,9 @@ onchange="displayValue(event)" />
     <!-- Custom Theme JavaScript -->
     <script src="../static/js/creative.js"></script>
     <script src="../static/js/main.js"></script>
+
+
+
 
 </body>
 

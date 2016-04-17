@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+import logging
+import os
+
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-
 
 #Splash/Home page
 @app.route('/')
@@ -18,4 +20,6 @@ def group_id_path(path):
 	return render_template('vote.html', groupKey = path)
 
 if __name__ == '__main__':
-    app.run()
+	app.run()
+    # port= int(os.environ.get("PORT", 5000))
+    # app.run(host='0.0.0.0', port=port)

@@ -1,0 +1,12 @@
+
+.button-item {
+  /*width: 5em;  */
+  margin-bottom: 10px; 
+}
+
+@media(min-width:500px) {
+.button-item {
+  width: 15em;  
+  margin-bottom: 10px; 
+}
+}
