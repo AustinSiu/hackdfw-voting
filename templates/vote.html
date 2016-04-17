@@ -72,8 +72,8 @@
                     <h1 class="">{{ '{{' }}votes{{ '}}' }}</h1></center>
                 <center>
                     <p>
-                        <button onclick="updateStrong('{{ '{{' }}key{{ '}}' }}')" class="btn btn-info button-item">Strong Vote</button>
-                        <button onclick="updateWeak('{{ '{{' }}key{{ '}}' }}')" class="btn btn-success button-item">Weak Vote</button>
+                        <button onclick="updateStrong('{{ '{{' }}key{{ '}}' }}')" class="btn btn-info button-item">I want this!</button>
+                        <button onclick="updateWeak('{{ '{{' }}key{{ '}}' }}')" class="btn btn-success button-item">I guess...</button>
                         <button onclick="rename('{{ '{{' }}key{{ '}}' }}')" class="btn btn-warning button-item">Rename</button>
                         <button onclick="deleteItem('{{ '{{' }}key{{ '}}' }}')" class="btn btn-danger button-item">Delete</button>
                     </p>
@@ -84,25 +84,26 @@
 </script>
 
 <script id="highest-template" type="text/x-handlebars-template">
-        <div id="getHighestVote" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h4 class="modal-title">Winner</h4>
-                    </div>
-                    <div class="modal-body">
-                        <center>
-                            <h2 id = "ItemName">{{ '{{' }}name{{ '}}' }}</h2>
-                        </center>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+    <div id="getHighestVote" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Winner</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <h2 id="ItemName">{{ '{{' }}name{{ '}}' }}</h2>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                    <a href="/home" class="btn btn-info" role="button">Home</a>
                 </div>
             </div>
         </div>
-    </script>
+    </div>
+</script>
 
 
 
@@ -143,35 +144,14 @@
     <script>
         function loadModal(){
             $("#myModal").modal('show');
-
         }
         
-        
-        
-        // function displayValue(event) {
-        //      document.getElementById("url").innerHTML=event.fpfile.url; 
-        // }
-        
-        // function uploadImg(){
-        //     var yourApiKey = 'AhTgLagciQByzXpFGRI0Az'
-        //     filepicker.setKey(yourApiKey);
-
-        //     document.getElementById("uploadPhotoBtn").onclick = function(){
-        //       filepicker.pick({
-        //           services:['COMPUTER', 'CONVERT'],
-        //           mimetype:'image/*',
-        //           cropRatio:1,
-        //           cropForce:true,
-        //         },
-        //         function onSuccess(Blob){
-        //           var image = document.getElementById("imgPlaceholder");
-        //           var src = 'https://process.filestackapi.com/' + yourApiKey +
-        //             '/circle/' + Blob.url
-        //           image.setAttribute('src', src);
-        //         }
-        //       );
-        //     };
-        // }
+        function onFocus(){
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#item_name_form').focus();
+                $('#item_name_form').val('');
+            })
+        }
     </script>
 
 
@@ -188,17 +168,17 @@
                 <div class="modal-body">
                     <div>
                         <!--<form name="item-info" class="pure-form pure-form-aligned">-->
-                            <fieldset>
-                                <div class="pure-control-group">
-                                    <label for="item_name_form">Name</label>
-                                    <input id="item_name_form" type="text" placeholder="Name" class="item-input" value="" autofocus>
-                                </div>
-                                <!--<div class="pure-control-group">
+                        <fieldset>
+                            <div class="pure-control-group">
+                                <label for="item_name_form">Name</label>
+                                <input id="item_name_form" type="text" placeholder="Name" class="item-input" value="" onfocus="onFocus()" autofocus>
+                            </div>
+                            <!--<div class="pure-control-group">
                                     <label for="item_id_form">ID</label>
                                     <input id="item_id_form" type="number" placeholder="ID" class="item-input" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                                         value="">
                                 </div>-->
-                                <!--<div class="pure-control-group hidden">
+                            <!--<div class="pure-control-group hidden">
                                     <label for="url_form">Image URL</label>
                                     <input id="url_form" type="text" placeholder="URL" class="item-input" value="">
                                 </div>
@@ -207,7 +187,7 @@
                                     <input type="filepicker" data-fp-apikey="A1VISLPrfTcijxscOkMXoz" onchange="displayValue(event)" />
                                     <span id="url"></span>
                                 </div>-->
-                            </fieldset>
+                        </fieldset>
                         <!--</form>-->
                     </div>
                 </div>
@@ -240,12 +220,12 @@
 
     <div class="row text-center">
         <button onclick="loadModal()" class="btn btn-primary btn-xl button-main">Create Item</button>
-        
+
         <hr>
     </div>
 
-    
-    <div id= "highestItemWinner"></div>
+
+    <div id="highestItemWinner"></div>
 
 
 
@@ -258,8 +238,7 @@
         document.getElementById("url_form").value = url;
         $('#myModal').modal('show');
     }
-        
-</script>
+    </script>
 
 
     <!-- jQuery -->
