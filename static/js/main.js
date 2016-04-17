@@ -4,33 +4,25 @@ function createGroup(groupName) {
     console.log(groupName);
 
     if (groupName != null) {
-	    var newRef = ref.push({
-	      "name": groupName
-	    });
-      var newID = newRef.key();
-      console.log(newID);
-      window.location.replace("/group/" + newID);
+		var newRef = ref.push({
+			"name": groupName
+		});
+		var newID = newRef.key();
+		// console.log
+
+
+		(newID);
+		window.location.replace("/group/" + newID);
     }
 }
 
 function createItem(itemName) {
-    console.log(itemName);
+    // console.log(itemName);
 
     if (itemName != null) {
-	   var newRef = ref.child(groupKey + "/items").push({
-	      "name": itemName
-	   });
-       var newID = newRef.key();
-       console.log(newID);
-    //    window.location.replace("/item/" + newID);
-    //    if (imgName != null) {
-	//        var newImgRef = ref.push({
-	//            "name": imgName
-	//        });
-    //        var newImgID = newImgRef.key();
-    //        console.log(newImgID);
-    //        window.location.replace("/item/" + newImgID);
-    //     }
+		var newRef = ref.child(groupKey + "/items").push({
+			"name": itemName
+		});
     }
 }
 
@@ -60,10 +52,10 @@ function loadItems() {
 		var json = snapshot.val();
 		var key = snapshot.key();
 		json.key = key;
-		if (!json.votes){
+		if (!json.votes) {
 			json.votes = 0;
 		}
-		console.log(json);
+		// console.log(json);
 		// console.log(json.name)
 		$('#items').append(template(json));
 	});
@@ -82,9 +74,9 @@ function loadItems() {
 		var json = snapshot.val();
 		var key = snapshot.key();
 		json.key = key;
-		console.log(json);
+		// console.log(json);
 		$('#' + snapshot.key()).replaceWith();
-		console.log(snapshot.key())
+		// console.log(snapshot.key())
 	});
 }
 
@@ -134,18 +126,52 @@ function rename(key) {
 } (jQuery));
 
 
+//on load
+function loadClock() {
+	var dateFinal;
+	ref.child(groupKey + "/time/").once("value", function (snapshot) {
+		console.log(snapshot.val());
+		dateFinal = snapshot.val().time;
+		if (dateFinal) {
+			console.log(snapshot.val());
 
+			$('#countDown').visible();
+			$('#countDownInput').invisible();
+
+			var clock = document.getElementById('clockdiv');
+			var timeinterval = setInterval(function () {
+				var t = getTimeRemaining(dateFinal);
+				clock.innerHTML =
+					// 'hours: ' + t.hours + '<br>' +
+					// 'minutes: ' + t.minutes + '<br>' +
+					// 'seconds: ' + t.seconds;
+					t.hours + ':' + t.minutes + ':' + t.seconds;
+				if (t.total <= 0) {
+					clearInterval(timeinterval);
+					timeOut();
+				}
+			}, 1000);
+		}
+	});
+}
+
+
+//for button
 function initializeClock(endtime) {
+
 	$('#countDownInput').invisible();
 	$('#countDown').visible();
-
-
 
 	var date = Date.now;
 	var currentDate = new Date();
 	var newDateObj = new Date(currentDate.getTime() + endtime * 60000);
 
 	var dateString = newDateObj.toString();
+
+
+	var newRef = ref.child(groupKey + "/time/").set({
+		"time": dateString
+	});
 
 
 	var clock = document.getElementById('clockdiv');
@@ -155,7 +181,7 @@ function initializeClock(endtime) {
 			// 'hours: ' + t.hours + '<br>' +
 			// 'minutes: ' + t.minutes + '<br>' +
 			// 'seconds: ' + t.seconds;
-			t.hours + ':' + t.minutes +':'+t.seconds;
+			t.hours + ':' + t.minutes + ':' + t.seconds;
 		if (t.total <= 0) {
 			clearInterval(timeinterval);
 			timeOut();
@@ -176,8 +202,4 @@ function getTimeRemaining(endtime) {
 		'minutes': minutes,
 		'seconds': seconds
 	};
-}
-
-function timeOut(){
-	alert("wow!");
 }
