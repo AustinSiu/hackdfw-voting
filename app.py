@@ -15,9 +15,9 @@ def home_page():
 def group_page():
 	return render_template('vote.html')
 
-@app.route('/group/<path>')
-def group_id_path(path):
-	return render_template('vote.html', groupKey = path)
+@app.route('/group/<string:groupKey>')
+def group_id_path(groupKey):
+	return render_template('vote.html', groupKey = groupKey)
 
 if __name__ == '__main__':
 	app.run()
